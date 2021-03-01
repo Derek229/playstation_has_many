@@ -10,10 +10,13 @@ require 'faker'
 
 
 Genre.destroy_all
-
+Game.destroy_all
 
 
 5.times do
  genre = Faker::Game.genre
- Genre.create(name: "#{genre}")
+ g = Genre.create(name: "#{genre}")
+ 4.times do 
+  g.games.create(name:Faker::Game.title, body:Faker::Games::WorldOfWarcraft.quote, price: 59.99)
+ end
 end
